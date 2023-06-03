@@ -1,38 +1,415 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Roboto';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.Navigation {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Heading {
+    display: block;
+    background-image: url(https://myflixer.to/images/group_1/theme_7/header-bg.jpg);
+    margin-bottom: 25px;
+    padding-bottom: 125px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav {}
+
+.header_img {
+    color: #3e8afa;
+    font-size: 14px;
+    line-height: 16.8px;
+    margin: 0px 10px 0px 0px;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.Navigation a {
+    height: 65px;
+    line-height: 65px;
+    margin: 0;
+    padding: 0 20px;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Heading h5 {
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 30.8px;
+    font-weight: 300;
+    text-align: center;
+    position: relative;
+    top: 4rem;
+}
+
+.body_nav {
+    margin-top: 25px;
+}
+
+.body_nav h2 {
+    align-items: center;
+    color: #241f21;
+    display: flex;
+    /* font-family: Outfit; */
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 33.6px;
+    text-align: left;
+}
+
+.recom_option {
+    display: flex;
+    justify-content: start;
+    gap: 25px;
+    align-items: center;
+    border-radius: 4.2px;
+    color: #241f21;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+}
+
+.recom_option div:first-child {
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 4.2px;
+    color: #128294;
+    border: groove #128294;
+    border-width: thin;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 3px 9px;
+    text-align: left;
+}
+
+/* .column {
+    max-width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
+} */
+
+.card_container {
+    /* display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    /* Gap between columns */
+    margin-top: 15px;
+
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    height: 406px;
+}
+
+.card {
+    /* padding: 10px; */
+    /* width: 25rem; */
+    text-align: center;
+    width: 327px;
+    height: 573px;
+    border-top-right-radius: 10x;
+    border-top-left-radius: 10px;
+    overflow: hidden;
+    z-index: 0;
+    transition: z-index 0.5s ease, box-shadow 0.5s;
+}
+
+.card:hover {
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.card button {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    padding: 0 25px;
+}
+
+.card button:hover>* {
+    color: white;
+}
+
+.card button:hover {
+    background-color: #008CBA;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+
+
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup img {
+    width: 50%;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #06D85F;
+}
+
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.footer-distributed {
+    background: #666;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 40px 50px;
+}
+
+.footer-left img:first-child {
+    height: 100px;
+    width: 100px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+    width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3 {
+    color: #ffffff;
+    font: normal 36px 'Open Sans', cursive;
+    margin: 0;
+}
+
+.footer-distributed h3 span {
+    color: lightseagreen;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    font-weight: 400;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+    color: #222;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+    width: 35%;
+}
+
+.footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 400;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+    color: lightseagreen;
+    text-decoration: none;
+    ;
+}
+
+.footer-distributed .footer-links a:before {
+    content: "|";
+    font-weight: 300;
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+    content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+    width: 20%;
+}
+
+.footer-distributed .footer-company-about {
+    line-height: 20px;
+    color: #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+    .footer-distributed {
+        font: bold 14px sans-serif;
+    }
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+
 }
