@@ -25,12 +25,12 @@
     transform: translateX(0);
     max-width: 100%;
     overflow: hidden;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .current img {
     width: 100%;
-    object-fit: cover;
+    object-fit: fill;
 
 }
 
@@ -43,6 +43,7 @@
     display: flex;
 
 }
+
 
 .slide-content {
 

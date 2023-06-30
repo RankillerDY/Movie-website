@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Films } from './Film_list';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import './Slider.css'
 
 export default function Slider() {
@@ -9,29 +10,29 @@ export default function Slider() {
   // slideLength 0 -> 8
   // currentSlide 1-> 9 
 
-  const autoscroll = true 
+  const autoscroll = true
   let slideInterval
   let IntervalTime = 5000;
 
-  const auto = function() {
+  const auto = function () {
     slideInterval = setInterval(nextSlide, IntervalTime)
   }
 
   useEffect(() => {
-    if(autoscroll) {
+    if (autoscroll) {
       auto();
     }
-    
+
     return () => clearInterval(slideInterval)
-  }, [currentSlide]) 
+  }, [currentSlide])
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === slideLength ? 1 : currentSlide + 1)
   }
 
-  const prevSlide = () => {
-    setCurrentSlide(currentSlide === 1 ? 9 : currentSlide - 1)
-  }
+  // const prevSlide = () => {
+  //   setCurrentSlide(currentSlide === 1 ? 9 : currentSlide - 1)
+  // }
 
   useEffect(() => {
     setCurrentSlide(1)
@@ -39,28 +40,28 @@ export default function Slider() {
 
   return (
     <div className='slider'>
-        {/* <AiOutlineArrowLeft className = 'arrow prev' onClick={prevSlide}></AiOutlineArrowLeft>
+      {/* <AiOutlineArrowLeft className = 'arrow prev' onClick={prevSlide}></AiOutlineArrowLeft>
         <AiOutlineArrowRight className = 'arrow next' onClick={nextSlide}></AiOutlineArrowRight> */}
 
-        {Films.map((slide,index)=> {
-            return(
-                <div className={slide.id == currentSlide ? 'slide current' : 'slide'} >
-                    {slide.id === currentSlide && (
-                        <>
-                        <div className='slide-wrapper'>
-                        <img src={slide.Image} alt={slide.Title}></img>
-                          <div className='slide-content'>
-                            <h2>{slide.Title}</h2>
-                            <p>{slide.details}</p>
-                            <hr></hr>
-                            <button type="button" class="btn btn-primary">Primary</button>
-                          </div>
-                        </div>
-                        </>
-                    )}
+      {Films.map((slide, index) => {
+        return (
+          <div className={slide.id == currentSlide ? 'slide current' : 'slide'} >
+            {slide.id === currentSlide && (
+              <>
+                <div className='slide-wrapper'>
+                  <img src={slide.Image} alt={slide.Title}></img>
+                  <div className='slide-content'>
+                    <h2>{slide.Title}</h2>
+                    <p>{slide.details}</p>
+                    <hr></hr>
+                    <button type="button" class="btn btn-primary">Primary</button>
+                  </div>
                 </div>
-            )
-        })}
+              </>
+            )}
+          </div>
+        )
+      })}
 
     </div>
   )

@@ -41,7 +41,7 @@ export default function Footer() {
 
                     <div>
                         <i class="fa fa-envelope"></i>
-                        <p><a href="mailto:support@company.com">support@company.com</a></p>
+                        <p><a href="mailto:support@company.com" className='email-contact'>support@company.com</a></p>
                     </div>
 
                 </div>
